@@ -1,0 +1,114 @@
+{
+  "entities": {
+    "Ticket": {
+      "title": "Ticket",
+      "description": "A robot booth experience lucky draw ticket issued to a participant",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ticket ID",
+          "maxLength": 64
+        },
+        "name": {
+          "type": "string",
+          "description": "Participant name",
+          "maxLength": 50,
+          "minLength": 1
+        },
+        "age": {
+          "type": "string",
+          "description": "Participant age or school grade",
+          "maxLength": 30,
+          "minLength": 1
+        },
+        "favoriteExperience": {
+          "type": "string",
+          "description": "Robot booth program or experience enjoyed by participant",
+          "maxLength": 100
+        },
+        "prizeId": {
+          "type": "string",
+          "description": "Identifier of the prize won",
+          "maxLength": 32
+        },
+        "prizeName": {
+          "type": "string",
+          "description": "Name of the prize won",
+          "maxLength": 50
+        },
+        "prizeGrade": {
+          "type": "string",
+          "description": "Tier/grade of the prize (e.g. 1등, 2등, 3등, 참가상)",
+          "maxLength": 20
+        },
+        "prizeEmoji": {
+          "type": "string",
+          "description": "Emoji icon for the prize",
+          "maxLength": 10
+        },
+        "redeemed": {
+          "type": "boolean",
+          "description": "Whether the snack/prize has been redeemed"
+        },
+        "redeemedAt": {
+          "type": "string",
+          "description": "ISO timestamp when the prize was verified and handed over by admin",
+          "maxLength": 40
+        },
+        "redeemedBy": {
+          "type": "string",
+          "description": "Admin or staff name who processed the redemption",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the ticket was generated",
+          "maxLength": 40
+        },
+        "deviceId": {
+          "type": "string",
+          "description": "Unique client browser/device fingerprint hash",
+          "maxLength": 64
+        }
+      },
+      "required": ["id", "name", "age", "prizeId", "prizeName", "prizeGrade", "redeemed", "createdAt"]
+    },
+    "PrizeConfig": {
+      "title": "PrizeConfig",
+      "description": "Booth prize settings and probability configuration",
+      "type": "object",
+      "properties": {
+        "prizes": {
+          "type": "array",
+          "description": "Configured list of prizes and quantities"
+        },
+        "boothActivities": {
+          "type": "array",
+          "description": "List of customizable interactive booth activity programs"
+        },
+        "boothName": {
+          "type": "string",
+          "description": "Name of the booth",
+          "maxLength": 100
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last update timestamp",
+          "maxLength": 40
+        }
+      },
+      "required": ["boothName"]
+    }
+  },
+  "firestore": {
+    "/tickets/{ticketId}": {
+      "schema": "Ticket",
+      "description": "Individual participant draw results and redemption verification tickets"
+    },
+    "/settings/config": {
+      "schema": "PrizeConfig",
+      "description": "Booth prize settings, activities, and live configuration"
+    }
+  }
+}

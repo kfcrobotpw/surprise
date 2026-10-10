@@ -1,0 +1,6 @@
+{
+  "name": "K.F.C. 로봇동아리 체험부스 뽑기 & 관리자 시스템",
+  "description": "용인시청소년수련관 소속 로봇동아리 K.F.C. 부스 체험자용 스마트폰 실시간 뽑기와 선물 수령 QR 검증 및 관리자 대시보드 시스템",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
